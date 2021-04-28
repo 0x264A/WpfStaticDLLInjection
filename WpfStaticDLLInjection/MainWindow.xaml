@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfStaticDLLInjection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStaticDLLInjection"
+        mc:Ignorable="d"
+        Title="Static DLL Injection Tool" Height="450" Width="800">
+    <Grid>
+        <Button Name="btOpenPEFile" Content="Browse" HorizontalAlignment="Left" Margin="639,128,0,0" VerticalAlignment="Top" Click="Button_Click_OpenPEFile" Height="32" Width="70" FontSize="15" RenderTransformOrigin="0.598,-2.774"/>
+        <TextBlock Text="DLL Injection Tool" HorizontalAlignment="Left" Margin="77,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30"></TextBlock>
+        <TextBlock Text="Target File" HorizontalAlignment="Left" Margin="134,128,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Height="30" Width="100" />
+        <TextBox Name="tbPEFile" HorizontalAlignment="Left" Margin="259,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" Height="30" FontSize="20" AllowDrop="True">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="Enter target PE file path or drag here..."/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox >
+        <TextBlock HorizontalAlignment="Left" Margin="134,213,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Height="30" Width="100" ><Run Text="Target "/><Run Language="zh-cn" Text="DLL"/></TextBlock>
+        <TextBox Name="tbDLLFile"  HorizontalAlignment="Left" Margin="259,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" Height="30" FontSize="20" AllowDrop="True">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="Enter DLL file path or drag here..."/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <Button Content="Browse" HorizontalAlignment="Left" Margin="639,212,0,0" VerticalAlignment="Top" Click="Button_Click_OpenDLLFile" Height="32" Width="70" FontSize="15" RenderTransformOrigin="0.598,-2.774"/>
+        <Button Content="Inject" HorizontalAlignment="Left" Margin="639,344,0,0" VerticalAlignment="Top" Click="Button_Click_InjectDLL" Height="32" Width="70" FontSize="15" RenderTransformOrigin="0.598,-2.774"/>
+        <TextBlock HorizontalAlignment="Left" Margin="134,292,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Height="30" Width="100" ><Run Language="zh-cn" Text="FuncName"/></TextBlock>
+        <TextBox x:Name="tbDLLFuncName"  HorizontalAlignment="Left" Margin="259,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" Height="30" FontSize="20">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="Enter DLL FunctionName here..."/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+
+    </Grid>
+</Window>
